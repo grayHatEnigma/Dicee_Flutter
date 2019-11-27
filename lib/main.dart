@@ -47,13 +47,13 @@ class _DicePageState extends State<DicePage> {
         children: <Widget>[
           Expanded(
             child: FlatButton(
-              onPressed: pressed,
+              onPressed: rollDice,
               child: Image.asset('images/dice$leftDiceNumber.png'),
             ),
           ),
           Expanded(
             child: FlatButton(
-              onPressed: pressed,
+              onPressed: rollDice,
               child: Image.asset('images/dice$rightDiceNumber.png'),
             ),
           ),
@@ -62,7 +62,7 @@ class _DicePageState extends State<DicePage> {
     );
   }
 
-  void pressed() {
+  void rollDice() {
     setState(() {
       leftDiceNumber = rand.nextInt(6) + 1;
       rightDiceNumber = rand.nextInt(6) + 1;
@@ -72,7 +72,7 @@ class _DicePageState extends State<DicePage> {
   void initState() {
     super.initState();
     ShakeDetector detector = ShakeDetector.autoStart(onPhoneShake: () {
-      pressed();
+      rollDice();
       print("Phone is shaking!");
     });
   }
